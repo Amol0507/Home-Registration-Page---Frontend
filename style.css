@@ -1,0 +1,440 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Poppins', sans-serif;
+}
+
+
+
+/* Body background */
+body {
+    display: flex; 
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   background: url('background2.jpg') no-repeat; 
+   background-size: cover; 
+   background-position: center; 
+
+}
+
+
+/* Head   home,about... */
+header {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   padding: 20px 100px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   z-index: 99;
+}
+
+
+
+
+
+/* Logo */
+.logo {
+   font-size: 1.5em;
+   color: rgb(252, 5, 149);
+   user-select: none;
+}
+
+
+/* nagigation of home,about,.. */
+.navigation a {
+   position: relative;
+   font-size: 1.1em;
+   color: #fff;
+   text-decoration: none;
+   font-weight: 400;
+   margin-left: 40px;
+}
+.navigation a::after {
+   content: '';
+   position: absolute;
+   left: 0;
+   bottom: -6px;
+   width: 90%;
+   height: 3px;
+   background: #fff;
+   border-radius: 5px;
+   transform-origin: right;
+   transform: scaleX(0);
+   transition: transform.5s;
+}
+.navigation a:hover::after {
+   transform-origin: left;
+   transform: scaleX(1);
+}
+
+
+
+
+/* navigation of Login Button */
+.navigation .btnLogin-popup {
+   width: 100px;
+   height: 35px;
+   background: transparent;
+   border: 2px solid #fff;
+   outline: none;
+   border-radius: 6px;
+   cursor: pointer;
+   font-size: 1.1em;
+   color: #fff;
+   font-weight: 500;
+   margin-left: 40px;
+   transition: .5s;
+}
+.navigation .btnLogin-popup:hover {
+   background: #fff;
+   color: #162938;
+}
+
+
+
+
+/* wapper login & signup page border */
+.wrapper{
+   position: relative;
+   width: 550px;
+   height: 350px;
+   background: transparent;
+   border: 2px solid rgb(255, 0, 149);
+   box-shadow: 0  0 50px rgb(255, 0, 149);
+   overflow: hidden; 
+   transform: scale(0); 
+   transition: transform .5s ease, height .6s ease;  
+}
+ .wrapper.active-popup{ 
+    transform: scale(1); 
+ } 
+
+ 
+
+
+/* wrapper username & password Under lines size */
+.wrapper .form-box{
+   position: absolute;
+   top: 0;
+   width: 45.5%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.wrapper .icon-close{
+   position: absolute;
+   top: 0; 
+   right: 0; 
+   width: 28px;  
+   height: 28px;
+   font-size: 1.2em;
+   color: #fff; 
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-bottom-left-radius: 20px;
+   cursor: pointer;
+   z-index: 1; 
+
+}
+
+/* Login page width length in center */
+.wrapper .form-box.login{
+   left: 0;
+   padding: 0 60px 0 40px;
+}
+
+.wrapper .form-box.login .animation{
+   transform: translateX(0);
+   opacity: 1;
+   filter: blur(0);
+   transition: .7s ease;
+   transition-delay: calc(.1s * var(--j));
+}
+
+.wrapper.active .form-box.login .animation{
+   transform: translateX(-120%);
+   opacity: 0;
+   filter: blur(10px);
+   transition-delay: calc(.1s * var(--i));
+}
+
+.wrapper .form-box.register{
+   right: 0;
+   padding: 0 30px 0 60px;
+   pointer-events: none;
+}
+
+.wrapper.active .form-box.register{
+   pointer-events: auto;
+}
+
+
+/*  */
+.wrapper .form-box.register .animation{
+   transform: translate(160%);
+   opacity: 1;
+   filter: blur(10px);
+   transition: .7s ease;
+   transition-delay: calc(.1s * var(--j));
+}
+
+.wrapper.active .form-box.register .animation{
+   transform: translate(0);
+   opacity: 1;
+   filter: blur(0);
+   transition-delay: calc(.1s * var(--i));
+}
+
+
+/* Login page username & Password in Center */
+.form-box h2{
+   font-size: 32px;
+   color: #fff;
+   text-align: center;
+}
+
+/* username & Password line design */
+.form-box .input-box{
+   position: relative;
+   width: 100%;
+   height: 20px;
+/* background: #fff; */
+   margin: 25px 0;
+}
+.input-box input{
+   width: 100%;
+   height: 100%;
+   background: transparent;
+   border: none;
+   outline: none;
+   border-bottom: 2px solid #fff;
+   padding-right: 23px;
+   font-size: 16px;
+   color: #fff;
+   font-weight: 500;
+   transition: .5s;
+}
+
+/* Login page username & Password,lines:- color blue #0ef */
+.input-box input:focus,
+.input-box input:valid{
+   border-bottom-color: rgb(255, 0, 149);
+}
+
+/* username & Password color white */
+.input-box label{
+   position: absolute;
+   top: 50%;
+   left: 0;
+   transform: translateY(-50%);
+   font-size: 16px;
+   color: #fff;
+   pointer-events: none;
+   transition: .5s;
+}
+
+/* Login page label username & Password,lines:- color blue #0ef */
+.input-box input:focus~label,
+.input-box input:valid~label{
+   top: -5px;
+   color: rgb(255, 0, 149);
+}
+
+/* username & Password Symbols */
+.input-box i{
+   position: absolute;
+   top: 50%;
+   right: 0;
+   transform: translateY(-50%);
+   font-size: 18px;
+   color: #fff;
+   transition: .5s;
+}
+
+/* Login page username & Password symbols color:- color blue #0ef */
+.input-box input:focus~i,
+.input-box input:valid~i{
+   color: rgb(255, 0, 149);
+}
+
+
+/* Login Button size color shape */
+.btn {
+   position: relative;
+   width: 80%;
+   height: 43px;
+   background: transparent;
+   border: 2px solid rgb(255, 0, 149);
+   outline: none;
+   border-radius: 40px;
+   cursor: pointer;
+   font-size: 16px;
+   color: #fff;
+   font-weight: 600;
+   z-index: 1;
+   overflow: hidden;
+}
+
+
+/* Login Button transformation color */
+.btn::before {
+   content: '';
+   position: absolute;
+   top: -100%;
+   left: 0;
+   width: 100%;
+   height: 300%;
+   background: linear-gradient(#081b29, rgb(255, 0, 149), #081b29, rgb(255, 0, 149));
+   z-index: -1;
+   transition: .5s;
+}
+.btn:hover:before{
+   top: 0;
+}
+
+
+/* Do you have any account size color center */
+.form-box .logreg-link{
+   font-size: 13.5px;
+   color: #fff;
+   text-align: center;
+   margin: 20px 0 10px;
+}
+
+/* Do you have any account { signup } color  */
+.logreg-link p a{
+   color: rgb(255, 0, 149);
+   text-decoration: none;
+   font-weight: 600;
+}
+.logreg-link p a:hover{
+   text-decoration: underline;
+}
+
+
+
+
+
+/* welcome back text Center  */
+.wrapper .info-text{
+   position: absolute;
+   top: 0;
+   width: 70%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+/* welcome page right center */
+.wrapper .info-text.login{
+   right: 0;
+   text-align: right;
+   padding: 0 40px 60px 150px;
+}
+
+.wrapper .info-text.login .animation{
+   transform: translateX(0);
+   opacity: 1;
+   filter: blur(0);
+   transition: .7s ease;
+   transition-delay: calc(.1s * var(--j));
+}
+
+.wrapper.active .info-text.login .animation{
+   transform: translateX(120%);
+   opacity: 0;
+   filter: blur(10px);
+   transition-delay: calc(.1s * var(--i));
+}
+
+.wrapper .info-text.register{
+   left: 0;
+   text-align: left;
+   padding: 0 150px 60px 40px;
+   pointer-events: none;
+}
+
+.wrapper.active .info-text.register{
+   pointer-events: auto;
+}
+
+.wrapper .info-text.register .animation{
+   transform: translate(-120%);
+   opacity: 0;
+   filter: blur(10px);
+   transition: .7s ease;
+   transition-delay: calc(.1s * var(--j));
+}
+
+.wrapper.active .info-text.register .animation{
+   transform: translate(0);
+   opacity: 1;
+   filter: blur(0);
+   transition-delay: calc(.1s * var(--i));
+}
+
+/* welcome text size & color */
+.info-text h2 {
+   font-size: 30px;
+   color: #fff;
+   line-height: 1.3;
+   text-transform: uppercase;
+}
+
+/* The great creaters group color size */
+.info-text p{
+   font-size: 15px;
+   color: #fff;
+}
+
+
+/* login page Animation design */
+.wrapper .bg-animate{
+   position: absolute;
+   top: -4px;
+   right: 0;
+   width: 750px;
+   height: 490px;
+   background: linear-gradient(45deg, #081b29, rgb(255, 0, 149));
+   border-bottom: 3px solid rgb(255, 0, 149);
+   transform: rotate(10deg) skewY(40deg);
+   transform-origin: bottom right;
+   transition: 1.5s ease;
+   transition-delay: 1.6s;
+}
+
+.wrapper.active .bg-animate{
+   transform: rotate(0) skewY(0);
+   transition-delay: .5s;
+}
+
+/* sign up page Animation design */
+.wrapper .bg-animate2 {
+   position: absolute;
+   top: 100%;
+   left: 225px;
+   width: 800px;
+   height: 700px;
+   background: #05131e; 
+   border-top: 3px solid rgb(255, 0, 149);
+   transform: rotate(0) skewY(0);
+   transform-origin: bottom left;
+   transition: 1.5s;
+   transition-delay: .5s;
+}
+
+.wrapper.active .bg-animate2{
+transform: rotate(-11deg) skewY(-41deg);
+transition-delay: 1.2s;
+}
